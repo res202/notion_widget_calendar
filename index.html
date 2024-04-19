@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Planner Mobile - Day View</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<script src="https://kit.fontawesome.com/c90c553a28.js" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<header style="color:#fff">
+  <div class="content">
+  <!-- Date Nav; Clicking the Date will take you to the Day View of the Current Date -->
+  <div class="activeMonth" style="display:inline">
+    <span class="prev" style='margin-left:10px; cursor:pointer' onclick="selectPreviousMonth()">&#10094;</span>
+    <span id="month" class="month" style='font-size:24px; margin-left:10px'></span>
+    <span class="next" style='margin-left:10px; cursor:pointer' onclick="selectNextMonth()">&#10095;</span>  
+  </div>
+  <!-- Switch Between Daily, Monthly and Weekly Views -->
+
+  </header>
+
+
+
+  
+<main style="color:3A3838">
+  <!-- Displays current weekday, date and week in plain text and via calendar display. Active days will display in gray text, while current days will display in orange. -->
+  <section class="activeDate">
+    <div class="dated" style="text-align:center">
+      <p id="dayOfMonth" class="dayOfMonth" style="font-weight:900; font-size:60px"></p>
+
+      <span id="weekDay" class="weekDay"></span>, KW
+      <span id="weekOfYear" class="weekOfYear"></span>
+    </div>
+    
+    <div class="calendar">
+      <ul class="weekDays" style="font-size:12px; font-weight:900;">
+        <li>MO</li>
+        <li>DI</li>
+        <li>MI</li>
+        <li>DO</li>
+        <li>FR</li>
+        <li>SA</li>
+        <li>SO</li>  
+      </ul>
+      
+      <ul id="days" class="days" style="font-size:12px">
+        <!--<li><span class="active">1</li>
+        <li>2</span></li>
+        <li><span class="current">3</span></li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+        <li>21</li>
+        <li>22</li>
+        <li>23</li>
+        <li>24</li>
+        <li>25</li>
+        <li>26</li>
+        <li>27</li>
+        <li>28</li>
+        <li>29</li>
+        <li>30</li>
+        <li>31</li>-->
+      </ul>
+    </div>
+  </section>
+
+
+
+</main>
+</div>
+<footer style="position:fixed; width:100%; right:3px; bottom: 3px">
+ 
+</footer>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
