@@ -71,7 +71,7 @@ function selectNextMonth() {
 
 //7. Set WeekDay 
 function addWeekDay() {
-  const weekday = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"];
+  const weekday = ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"];
 
   let newWeekDay = weekday[selectedDate.getDay()];
   document.getElementById("weekDay").innerHTML = newWeekDay;
