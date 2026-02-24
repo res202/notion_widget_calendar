@@ -31,3 +31,272 @@ header {
 .days li {
   width: 13.5%;
 }
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overscroll-behavior: contain;
+  height: calc(100dvh - 2vmin);
+  margin: 1vmin;
+  display: grid;
+  place-items: center;
+}
+
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100cqh;
+  width: 98dvw;
+  max-width: 100dvh;
+  max-height: calc(100vh - 2dvw);
+}
+
+iframe#tap {
+  position: absolute;
+  z-index: 10000;
+  width: 100cqw;
+  height: 100cqw;
+  border: 0px;
+}
+
+.infinite-calendar {
+  display: flex;
+  flex-direction: column;
+  max-height: 100dvh;
+  aspect-ratio: 8 / 7;
+
+  .header {
+    display: grid;
+    grid-template-rows: 8vmin 4vmin;
+    grid-template-columns: 10vmin 1fr 10vmin;
+    grid-template-areas: "prev title next" "days days days";
+
+    .title {
+      grid-area: title;
+      font-weight: bold;
+      height: 6vmin;
+      line-height: 7vmin;
+      text-align: center;
+      font-size: 6vmin;
+    }
+
+    .thead {
+      grid-area: days;
+      display: flex;
+      flex-direction: row;
+      gap: 0.5vmin;
+      height: 4vmin;
+
+      .cell {
+        flex: 1;
+        place-items: center;
+        display: grid;
+        font-size: 2vmin;
+        font-weight: bold;
+      }
+    }
+
+    button {
+
+      font-size: 6vmin;
+      margin-bottom: 0.5vmin;
+      line-height: 6vmin;
+
+      &.prev {
+        grid-area: prev;
+
+        &::before {
+          content: "◀";
+        }
+      }
+
+      &.next {
+        grid-area: next;
+
+        &::before {
+          content: "▶";
+        }
+      }
+    }
+
+  }
+
+  .tbody {
+    overflow-y: scroll;
+    aspect-ratio: 8.4 / 6;
+    height: calc(100dqh - 11cqw);
+    scrollbar-width: none;
+    scrollbar-gutter: stable;
+    scrollbar-color: #0000;
+    scroll-snap-type: block mandatory;
+    /* scroll-padding: 0.25rem; */
+    padding-top: .1cqw;
+    gap: 0.5cqw;
+
+    .year {
+      flex-direction: column;
+    }
+
+    .month {
+      aspect-ratio: 8.4 / 6;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5vmin;
+
+      .week {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5vmin;
+        height: 11vmin;
+        aspect-ratio: 8 / 1;
+
+        &::before {
+          content: attr(data-week);
+          color: #0004;
+          flex: 1;
+          display: grid;
+          place-items: center;
+          font-size: 5vmin;
+          font-weight: bolder;
+        }
+
+        .day {
+          flex: 1;
+          border: 1px solid black;
+          font-weight: bolder;
+          user-select: none;
+          display: grid;
+          place-items: center;
+          aspect-ratio: 1 / 1;
+
+          &.prev,
+          &.next {
+            color: #0006;
+          }
+
+          &.selected {
+            background-color: #0011ff29;
+            color: #fff;
+            outline: 0.5cqw solid #00F;
+            border: 1px solid #fff;
+            text-shadow: 0 0 2px #000, 0 0 2px #000, 0 0 2px #000;
+          }
+
+          .date {
+            font-size: 5vmin;
+          }
+
+        }
+      }
+    }
+  }
+
+/*   .weekend {
+    color: #e55;
+    text-shadow: -1px 0 1px #000, 0 -1px 1px #000, 0 1px 1px #000, 1px 0 1px #000, -1px -1px 1px #000, 1px -1px 1px #000, 1px 1px 1px #000, -1px 1px 1px #000;
+  } */
+
+}
+
+#scroll_animation {
+
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+
+  &.visible {
+    display: block;
+  }
+
+  #arrow_up {
+    animation: move_up 1s ease-in-out 1s;
+    filter: drop-shadow(0 0 10px #000);
+
+  }
+
+  #arrow_dn {
+    animation: move_dn 1s ease-in-out 2s;
+    filter: drop-shadow(0 0 10px #000);
+  }
+
+  #finger {
+    animation: touch 3s ease-in-out .5s, 
+      move_up 1s ease-in-out 1s, 
+      move_dn 1s ease-in-out 2s;
+    filter: drop-shadow(0 0 10px #000);
+  }
+}
+
+@keyframes move_up {
+  0% {
+    translate: 0 0;
+  }
+
+  20% {
+    translate: 0 -50px;
+  }
+
+  40% {
+    translate: 0 -20px;
+  }
+
+  60% {
+    translate: 0 -60px;
+  }
+
+  100% {
+    translate: 0 -0px;
+  }
+}
+
+@keyframes move_dn {
+  0% {
+    translate: 0 0;
+  }
+
+  20% {
+    translate: 0 50px;
+  }
+
+  40% {
+    translate: 0 20px;
+  }
+
+  60% {
+    translate: 0 60px;
+  }
+
+  100% {
+    translate: 0 0px;
+  }
+}
+
+@keyframes touch {
+  0% {
+    scale: 1;
+    filter: drop-shadow(0 0 10px #000);
+  }
+
+  10% {
+    scale: 0.9;
+    filter: drop-shadow(0 0 2px #000);
+  }
+
+  90% {
+    scale: 0.9;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
