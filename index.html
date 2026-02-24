@@ -7,43 +7,35 @@
 
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<script src="https://kit.fontawesome.com/c90c553a28.js" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com"> 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<header style="color:#fff">
-  <div class="content">
-  <!-- Date Nav; Clicking the Date will take you to the Day View of the Current Date -->
-  <div class="activeMonth" style="display:inline">
-    <span class="prev" style='margin-left:10px; cursor:pointer' onclick="selectPreviousMonth()">&#10094;</span>
-    <span id="month" class="month" style='font-size:24px; margin-left:10px'></span>
-    <span class="next" style='margin-left:10px; cursor:pointer' onclick="selectNextMonth()">&#10095;</span>  
+
+
+
+  <div class="container">
   </div>
-  <!-- Switch Between Daily, Monthly and Weekly Views -->
 
-  </header>
+  <script src="dom.js"></script>
+  <script src="cal-utils.js"></script>
+  <script src="cal.js"></script>
 
+  <svg id="scroll_animation" viewBox="0 0 512 512" xml:space="preserve">
+
+    <g fill="none" stroke-width="20" stroke="#71C386" stroke-linecap="round" stroke-linejoin="round">
+      <path id="arrow_up" d="M 100 200 v -100 m -50 50 l 50 -50 50 50" />
+      <path id="arrow_dn" d="M 100 250 v 100 m -50 -50 l 50 50 50 -50" />
+    </g>
+
+    <g id="finger">
+      <path fill="#FDC794" d="M230,170a120 120 0 1 1 240,0v190a120 120 0 1 1 -240,0z" />
+      <path fill="#FFE9EC" d="M265 255v-85a85 85 0 1 1 170,0v86h-170z" />
+      <path stroke="#F9A671" d="M265,345h170m-170,35h170" stroke-linecap="round" stroke-width="15" />
+      <path style="fill:#FFFFFF;" d="M265,255a85 50 0 1 1 170,0z" />
+    </g>
+
+  </svg>
 
 
   
-<main style="color:3A3838">
-  <!-- Displays current weekday, date and week in plain text and via calendar display. Active days will display in gray text, while current days will display in orange. -->
-  <section class="activeDate">
-    <div class="dated" style="text-align:center">
-      <p id="dayOfMonth" class="dayOfMonth" style="font-weight:900; font-size:60px"></p>
-
-      <span id="weekDay" class="weekDay"></span>, KW
-      <span id="weekOfYear" class="weekOfYear"></span>
-    </div>
-    
-  </section>
-
-
-
-</main>
-</div>
 <footer style="position:fixed; width:100%; right:3px; bottom: 3px">
  
 </footer>
